@@ -9,29 +9,11 @@ return [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
-        'request' => [
-            'class' => \yii\web\Request::class,
-            'baseUrl' => '',
-            'enableCsrfCookie' => false,
-            'enableCsrfValidation' => false,
-            'enableCookieValidation' => false,
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ],
-        ],
-        'response' => [
-            'class' => \yii\web\Response::class,
-            'format' => \yii\web\Response::FORMAT_JSON,
-            'formatters' => [
-                \yii\web\Response::FORMAT_JSON => [
-                    'class' => 'yii\web\JsonResponseFormatter',
-                    'prettyPrint' => YII_DEBUG,
-                    'contentType' => \yii\web\JsonResponseFormatter::CONTENT_TYPE_JSON,
-                ],
-            ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+            'itemFile' => '@common/config/rbac/items.php',
+            'assignmentFile' => '@common/config/rbac/assignments.php',
+            'ruleFile' => '@common/config/rbac/rules.php',
         ],
     ],
 ];

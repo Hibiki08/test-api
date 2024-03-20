@@ -1,0 +1,8 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} ^/admin
+RewriteRule ^admin(.*) backend/web/index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . frontend/web/index.php [L]
